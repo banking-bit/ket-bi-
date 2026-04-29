@@ -2345,3 +2345,467 @@ body {
     font-size: 16px !important; /* chống zoom khi focus */
   }
 }
+/* ===== NUMBER PAD MẬT KHẨU ===== */
+
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 8px 0 18px;
+}
+
+.num-key {
+  height: 46px;
+  padding: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.78);
+  color: #2c254f;
+  font-size: 20px;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(177, 130, 156, 0.12);
+  border: 1px solid rgba(244, 123, 155, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.num-key:active {
+  transform: scale(0.94);
+  background: #ffe8f0;
+}
+
+.action-key {
+  color: #f47b9b;
+  background: rgba(255, 232, 240, 0.8);
+}
+
+/* Modal có keypad thì gọn lại một chút */
+.modal-content {
+  max-width: 310px;
+  padding: 24px 20px;
+}
+
+.modal-content .heart-icon {
+  margin-bottom: 6px;
+}
+
+.modal-content h2 {
+  margin-bottom: 6px;
+}
+
+.modal-content p {
+  margin-bottom: 14px;
+}
+
+.password-field {
+  margin-bottom: 8px;
+}
+
+.error-message {
+  margin-bottom: 8px !important;
+} 
+/* ===== FIX MODAL KEYPAD GỌN LẠI ===== */
+
+/* Modal nhập mật khẩu nằm gọn trong màn hình điện thoại */
+.modal {
+  align-items: center;
+  padding: 54px 18px 18px !important;
+}
+
+/* Khung modal gọn hơn */
+.modal-content {
+  max-width: 292px !important;
+  padding: 18px 18px 20px !important;
+  border-radius: 28px;
+}
+
+/* Nút đóng nhỏ hơn và không sát mép */
+.close-btn {
+  top: 10px !important;
+  right: 10px !important;
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 20px !important;
+}
+
+/* Tim không bị dính Dynamic Island */
+.heart-icon {
+  font-size: 34px !important;
+  margin-bottom: 4px !important;
+  line-height: 1 !important;
+}
+
+/* Chữ gọn hơn */
+.modal-content h2 {
+  font-size: 25px !important;
+  margin: 0 0 6px !important;
+  line-height: 1.15 !important;
+}
+
+.modal-content p {
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  margin-bottom: 12px !important;
+}
+
+/* Ô mật khẩu */
+.password-field {
+  margin-bottom: 8px !important;
+}
+
+.password-field input {
+  height: 48px !important;
+  padding: 0 50px 0 18px !important;
+  font-size: 15px !important;
+}
+
+.toggle-password {
+  width: 36px !important;
+  height: 36px !important;
+  right: 6px !important;
+}
+
+/* Dòng lỗi */
+.error-message {
+  min-height: 18px !important;
+  margin: 0 0 6px !important;
+  font-size: 13px !important;
+}
+
+/* Keypad gọn hơn */
+.number-pad {
+  gap: 9px !important;
+  margin: 4px 0 14px !important;
+}
+
+.num-key {
+  height: 42px !important;
+  border-radius: 14px !important;
+  font-size: 18px !important;
+}
+
+/* Nút mở khóa gọn và cân */
+#unlockBtn {
+  min-width: 132px;
+  padding: 13px 22px !important;
+  font-size: 15px !important;
+}
+
+/* Riêng khi mở trên điện thoại thật */
+@media (max-width: 768px) and (pointer: coarse) {
+  .modal {
+    padding-top: calc(env(safe-area-inset-top) + 28px) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px) !important;
+  }
+
+  .modal-content {
+    max-width: 300px !important;
+  }
+
+  .heart-icon {
+    font-size: 36px !important;
+  }
+
+  .num-key {
+    height: 44px !important;
+  }
+}
+/* ===== TÁCH BÀN PHÍM RA KHỎI BẢNG NHẬP MK ===== */
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 18px !important;
+}
+
+.password-modal-stack {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Khối trên: nhập mật khẩu */
+.password-box {
+  position: relative;
+  max-width: none !important;
+  width: 100%;
+  padding: 20px 18px 18px !important;
+  border-radius: 28px !important;
+}
+
+/* Khối dưới: bàn phím số */
+.keypad-box {
+  width: 100%;
+  padding: 16px;
+  border-radius: 26px;
+  background: rgba(255, 248, 252, 0.96);
+  box-shadow: 0 18px 40px rgba(177, 130, 156, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+}
+
+.heart-icon {
+  font-size: 34px !important;
+  margin-bottom: 6px !important;
+  line-height: 1;
+}
+
+.modal-content h2 {
+  font-size: 25px !important;
+  margin: 0 0 6px !important;
+  line-height: 1.15;
+}
+
+.modal-content p {
+  margin-bottom: 12px !important;
+  font-size: 13px !important;
+  line-height: 1.45;
+}
+
+.password-field {
+  margin-bottom: 8px !important;
+}
+
+.password-field input {
+  height: 48px !important;
+  padding: 0 48px 0 16px !important;
+  font-size: 15px !important;
+  border-radius: 18px !important;
+}
+
+.toggle-password {
+  width: 34px !important;
+  height: 34px !important;
+  right: 6px !important;
+}
+
+.error-message {
+  min-height: 18px;
+  margin: 0 !important;
+  font-size: 13px !important;
+}
+
+/* keypad */
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 0 14px !important;
+}
+
+.num-key {
+  height: 42px !important;
+  border-radius: 14px !important;
+  font-size: 18px !important;
+  font-weight: 900;
+}
+
+.action-key {
+  color: #f47b9b;
+  background: rgba(255, 232, 240, 0.82);
+}
+
+#unlockBtn {
+  width: 100%;
+  min-width: 0 !important;
+  padding: 13px 20px !important;
+  font-size: 15px !important;
+  border-radius: 18px !important;
+}
+
+/* nút đóng */
+.close-btn {
+  top: 10px !important;
+  right: 10px !important;
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 20px !important;
+}
+
+/* mobile thật */
+@media (max-width: 768px) and (pointer: coarse) {
+  .modal {
+    padding-top: calc(env(safe-area-inset-top) + 20px) !important;
+    padding-right: 16px !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px) !important;
+    padding-left: 16px !important;
+    align-items: center;
+  }
+
+  .password-modal-stack {
+    max-width: 310px;
+    gap: 12px;
+  }
+
+  .password-box {
+    padding: 18px 16px 16px !important;
+  }
+
+  .keypad-box {
+    padding: 14px;
+  }
+
+  .num-key {
+    height: 44px !important;
+  }
+}
+/* ===== FIX MODAL THOÁNG HƠN, ĐỠ BÍ ===== */
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px !important;
+}
+
+.password-modal-stack {
+  width: 100%;
+  max-width: 312px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* tăng khoảng thở giữa 2 khối */
+}
+
+/* Khối nhập mật khẩu */
+.password-box {
+  position: relative;
+  width: 100%;
+  padding: 16px 18px 14px !important;
+  border-radius: 30px !important;
+  background: rgba(255, 248, 252, 0.95);
+  box-shadow: 0 14px 34px rgba(177, 130, 156, 0.16);
+}
+
+/* Khối bàn phím */
+.keypad-box {
+  width: 100%;
+  padding: 14px 14px 14px;
+  border-radius: 28px;
+  background: rgba(255, 248, 252, 0.95);
+  box-shadow: 0 14px 34px rgba(177, 130, 156, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.76);
+}
+
+/* Tim trên cùng */
+.heart-icon {
+  font-size: 28px !important;
+  margin-bottom: 4px !important;
+  line-height: 1 !important;
+}
+
+/* Nút đóng */
+.close-btn {
+  top: 10px !important;
+  right: 10px !important;
+  width: 28px !important;
+  height: 28px !important;
+  font-size: 20px !important;
+}
+
+/* Tiêu đề + mô tả */
+.modal-content h2 {
+  margin: 0 0 4px !important;
+  font-size: 23px !important;
+  line-height: 1.1 !important;
+}
+
+.modal-content p {
+  margin: 0 auto 10px !important;
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+  max-width: 220px;
+  color: #978ca3;
+}
+
+/* Ô nhập */
+.password-field {
+  margin-bottom: 6px !important;
+}
+
+.password-field input {
+  height: 46px !important;
+  padding: 0 48px 0 16px !important;
+  border-radius: 18px !important;
+  font-size: 15px !important;
+}
+
+.toggle-password {
+  width: 34px !important;
+  height: 34px !important;
+  right: 6px !important;
+  border-radius: 50% !important;
+}
+
+/* Dòng báo lỗi */
+.error-message {
+  min-height: 16px;
+  margin: 0 !important;
+  font-size: 12px !important;
+}
+
+/* Bàn phím số */
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 0 12px !important;
+}
+
+.num-key {
+  height: 40px !important;
+  border-radius: 14px !important;
+  font-size: 17px !important;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 8px 18px rgba(177, 130, 156, 0.08);
+}
+
+.action-key {
+  background: rgba(255, 236, 242, 0.88);
+  color: #ef7c9a;
+}
+
+/* Nút mở khóa */
+#unlockBtn {
+  width: 100%;
+  min-width: 0 !important;
+  height: 46px;
+  padding: 0 18px !important;
+  border-radius: 18px !important;
+  font-size: 15px !important;
+  font-weight: 800;
+}
+
+/* Mobile thật */
+@media (max-width: 768px) and (pointer: coarse) {
+  .modal {
+    padding-top: calc(env(safe-area-inset-top) + 14px) !important;
+    padding-right: 16px !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 14px) !important;
+    padding-left: 16px !important;
+  }
+
+  .password-modal-stack {
+    max-width: 318px;
+    gap: 16px;
+  }
+
+  .password-box {
+    padding: 14px 16px 12px !important;
+  }
+
+  .keypad-box {
+    padding: 12px;
+  }
+
+  .num-key {
+    height: 42px !important;
+  }
+
+  #unlockBtn {
+    height: 44px;
+  }
+}

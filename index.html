@@ -60,32 +60,57 @@
 
         <!-- Bảng nhập mật khẩu -->
         <div id="passwordModal" class="modal hidden">
-          <div class="modal-content">
-            <button id="closeModalBtn" class="close-btn" type="button">×</button>
+  <div class="password-modal-stack">
 
-            <div class="heart-icon">💗</div>
+    <div class="modal-content password-box">
+      <button id="closeModalBtn" class="close-btn">×</button>
 
-            <h2>Nhập mật khẩu</h2>
-            <p>Mật khẩu để mở chiếc két bí mật về em í.</p>
+      <div class="heart-icon">💗</div>
 
-            <div class="password-field">
-              <input
-                id="passwordInput"
-                type="password"
-                placeholder="Nhập mật khẩu..."
-                autocomplete="off"
-              >
+      <h2>Nhập mật khẩu</h2>
+      <p>Mật khẩu để mở chiếc két.</p>
 
-              <button id="togglePasswordBtn" class="toggle-password" type="button">
-                👁️
-              </button>
-            </div>
+      <div class="password-field">
+        <input
+          id="passwordInput"
+          type="password"
+          placeholder="Nhập mật khẩu..."
+          autocomplete="off"
+          readonly
+        >
 
-            <p id="errorMessage" class="error-message"></p>
+        <button id="togglePasswordBtn" class="toggle-password" type="button">
+          👁️
+        </button>
+      </div>
 
-            <button id="unlockBtn" type="button">Mở khóa</button>
-          </div>
-        </div>
+      <p id="errorMessage" class="error-message"></p>
+    </div>
+
+    <div class="keypad-box">
+      <div class="number-pad">
+        <button class="num-key" type="button" data-number="1">1</button>
+        <button class="num-key" type="button" data-number="2">2</button>
+        <button class="num-key" type="button" data-number="3">3</button>
+
+        <button class="num-key" type="button" data-number="4">4</button>
+        <button class="num-key" type="button" data-number="5">5</button>
+        <button class="num-key" type="button" data-number="6">6</button>
+
+        <button class="num-key" type="button" data-number="7">7</button>
+        <button class="num-key" type="button" data-number="8">8</button>
+        <button class="num-key" type="button" data-number="9">9</button>
+
+        <button class="num-key action-key" type="button" id="clearPasswordBtn">C</button>
+        <button class="num-key" type="button" data-number="0">0</button>
+        <button class="num-key action-key" type="button" id="deletePasswordBtn">⌫</button>
+      </div>
+
+      <button id="unlockBtn" type="button">Mở khóa</button>
+    </div>
+
+  </div>
+</div>
 
         <!-- Màn hình bên trong két -->
         <section id="vaultPage" class="vault-page hidden">

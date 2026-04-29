@@ -6,6 +6,9 @@ const closeModalBtn = document.getElementById("closeModalBtn");
 const passwordInput = document.getElementById("passwordInput");
 const togglePasswordBtn = document.getElementById("togglePasswordBtn");
 const unlockBtn = document.getElementById("unlockBtn");
+const numberKeys = document.querySelectorAll(".num-key[data-number]");
+const clearPasswordBtn = document.getElementById("clearPasswordBtn");
+const deletePasswordBtn = document.getElementById("deletePasswordBtn");
 const errorMessage = document.getElementById("errorMessage");
 const vaultPage = document.getElementById("vaultPage");
 const lockBtn = document.getElementById("lockBtn");
@@ -115,7 +118,24 @@ togglePasswordBtn.addEventListener("click", function () {
     togglePasswordBtn.textContent = "👁️";
   }
 });
+numberKeys.forEach(function (key) {
+  key.addEventListener("click", function () {
+    if (passwordInput.value.length < 12) {
+      passwordInput.value += key.dataset.number;
+      errorMessage.textContent = "";
+    }
+  });
+});
 
+clearPasswordBtn.addEventListener("click", function () {
+  passwordInput.value = "";
+  errorMessage.textContent = "";
+});
+
+deletePasswordBtn.addEventListener("click", function () {
+  passwordInput.value = passwordInput.value.slice(0, -1);
+  errorMessage.textContent = "";
+});
 document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
     forceLockWhenAppHidden();
