@@ -4,7 +4,8 @@ const openVaultBtn = document.getElementById("openVaultBtn");
 const passwordModal = document.getElementById("passwordModal");
 const closeModalBtn = document.getElementById("closeModalBtn");
 const passwordInput = document.getElementById("passwordInput");
-const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+const passcodeDots = document.getElementById("passcodeDots");
+const passcodeDotItems = passcodeDots.querySelectorAll("span");
 const unlockBtn = document.getElementById("unlockBtn");
 const numberKeys = document.querySelectorAll(".num-key[data-number]");
 const clearPasswordBtn = document.getElementById("clearPasswordBtn");
@@ -14,22 +15,32 @@ const vaultPage = document.getElementById("vaultPage");
 const lockBtn = document.getElementById("lockBtn");
 const homePage = document.getElementById("homePage");
 
+function updatePasscodeDots() {
+  const length = passwordInput.value.length;
+
+  passcodeDotItems.forEach(function (dot, index) {
+    if (index < length) {
+      dot.classList.add("filled");
+    } else {
+      dot.classList.remove("filled");
+    }
+  });
+}
+
+function resetPasswordInput() {
+  passwordInput.value = "";
+  errorMessage.textContent = "";
+  updatePasscodeDots();
+}
+
 function openModal() {
   passwordModal.classList.remove("hidden");
-  errorMessage.textContent = "";
-  passwordInput.value = "";
-  passwordInput.type = "password";
-  togglePasswordBtn.textContent = "👁️";
-
-  setTimeout(() => {
-    passwordInput.focus();
-  }, 200);
+  resetPasswordInput();
 }
 
 function closeModal() {
   passwordModal.classList.add("hidden");
-  errorMessage.textContent = "";
-  passwordInput.value = "";
+  resetPasswordInput();
 }
 
 function unlockVault() {
@@ -46,7 +57,7 @@ function unlockVault() {
     passwordModal.classList.add("modal-exit");
     homePage.classList.add("home-exit");
 
-    setTimeout(() => {
+    setTimeout(function () {
       passwordModal.classList.add("hidden");
       passwordModal.classList.remove("modal-exit");
 
@@ -56,24 +67,26 @@ function unlockVault() {
       vaultPage.classList.remove("hidden");
       vaultPage.classList.add("vault-enter");
 
-      passwordInput.value = "";
-      errorMessage.textContent = "";
+      resetPasswordInput();
     }, 320);
 
-    setTimeout(() => {
+    setTimeout(function () {
       vaultPage.classList.remove("vault-enter");
-      heartLayer.remove();
+
+      if (heartLayer.parentNode) {
+        heartLayer.remove();
+      }
     }, 900);
   } else {
     errorMessage.textContent = "Sai mật khẩu rồi cưng ơi 💗";
     passwordInput.value = "";
-    passwordInput.focus();
+    updatePasscodeDots();
 
-    const modalContent = document.querySelector(".modal-content");
-    modalContent.classList.add("shake");
+    const passcodeDisplay = document.querySelector(".passcode-display");
+    passcodeDisplay.classList.add("shake");
 
-    setTimeout(() => {
-      modalContent.classList.remove("shake");
+    setTimeout(function () {
+      passcodeDisplay.classList.remove("shake");
     }, 400);
   }
 }
@@ -82,20 +95,14 @@ function lockVault() {
   vaultPage.classList.add("hidden");
   homePage.classList.remove("hidden");
   passwordModal.classList.add("hidden");
-
-  passwordInput.value = "";
-  errorMessage.textContent = "";
+  resetPasswordInput();
 }
 
 function forceLockWhenAppHidden() {
   vaultPage.classList.add("hidden");
   homePage.classList.remove("hidden");
   passwordModal.classList.add("hidden");
-
-  passwordInput.value = "";
-  errorMessage.textContent = "";
-  passwordInput.type = "password";
-  togglePasswordBtn.textContent = "👁️";
+  resetPasswordInput();
 }
 
 openVaultBtn.addEventListener("click", openModal);
@@ -103,39 +110,26 @@ closeModalBtn.addEventListener("click", closeModal);
 unlockBtn.addEventListener("click", unlockVault);
 lockBtn.addEventListener("click", lockVault);
 
-passwordInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    unlockVault();
-  }
-});
-
-togglePasswordBtn.addEventListener("click", function () {
-  if (passwordInput.type === "password") {
-    passwordInput.type = "text";
-    togglePasswordBtn.textContent = "🙈";
-  } else {
-    passwordInput.type = "password";
-    togglePasswordBtn.textContent = "👁️";
-  }
-});
 numberKeys.forEach(function (key) {
   key.addEventListener("click", function () {
-    if (passwordInput.value.length < 12) {
+    if (passwordInput.value.length < 8) {
       passwordInput.value += key.dataset.number;
       errorMessage.textContent = "";
+      updatePasscodeDots();
     }
   });
 });
 
 clearPasswordBtn.addEventListener("click", function () {
-  passwordInput.value = "";
-  errorMessage.textContent = "";
+  resetPasswordInput();
 });
 
 deletePasswordBtn.addEventListener("click", function () {
   passwordInput.value = passwordInput.value.slice(0, -1);
   errorMessage.textContent = "";
+  updatePasscodeDots();
 });
+
 document.addEventListener("visibilitychange", function () {
   if (document.hidden) {
     forceLockWhenAppHidden();
