@@ -15,27 +15,43 @@
 
   <title>Két Bí Mật</title>
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+  >
   <link
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
   >
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
 
 <body>
   <main class="preview-area">
     <div class="phone-frame">
+      <div class="phone-status-bar">
+        <span class="status-time">9:41</span>
+        <div class="status-icons">
+          <span class="status-signal">●●●●</span>
+          <span class="status-wifi">⏣</span>
+          <span class="status-battery">🔋</span>
+        </div>
+      </div>
       <div class="phone-notch"></div>
 
       <div class="phone-screen">
-        <!-- Màn hình đầu -->
+        <!-- ======== MÀN HÌNH CHỦ ======== -->
         <main id="homePage" class="app home-screen">
           <div class="home-decoration heart-one">♡</div>
           <div class="home-decoration heart-two">✦</div>
           <div class="home-decoration heart-three">♡</div>
+          <div class="home-decoration star-one">✧</div>
+          <div class="home-decoration dot-one">●</div>
 
           <section class="card home-card">
             <div class="home-badge">PRIVATE VAULT</div>
@@ -64,245 +80,321 @@
           </section>
         </main>
 
-        <!-- Màn hình nhập mật khẩu -->
+        <!-- ======== MÀN HÌNH NHẬP MẬT MÃ (iOS 26) ======== -->
         <div id="passwordModal" class="modal hidden">
           <div class="passcode-shell">
-            <button id="closeModalBtn" class="close-btn" type="button">×</button>
+            <input
+              id="passwordInput"
+              class="hidden-password-input"
+              type="password"
+              autocomplete="off"
+              readonly
+            >
 
-            <div class="passcode-header">
-              <div class="heart-icon">💗</div>
-              <h2>Nhập mật khẩu</h2>
-              <p>Nhập mật khẩu để mở chiếc két bí mật về cô ấy.</p>
+            <div class="passcode-top">
+              <svg class="ios-heart-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#heartGrad)"/>
+                <defs>
+                  <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff758c" />
+                    <stop offset="100%" stop-color="#ff7eb3" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <h2 id="passcodeTitle">Nhập mật mã</h2>
+              <p id="passcodeSubtitle" class="passcode-subtitle"></p>
             </div>
 
-            <div class="passcode-display">
-              <input
-                id="passwordInput"
-                class="hidden-password-input"
-                type="password"
-                autocomplete="off"
-                readonly
-              >
-
-              <div id="passcodeDots" class="passcode-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <p class="passcode-hint">Nhập mật khẩu bằng bàn phím bên dưới</p>
-              <p id="errorMessage" class="error-message"></p>
+            <div id="passcodeDots" class="passcode-dots">
+              <span></span><span></span><span></span><span></span>
             </div>
 
-            <div class="passcode-sheet">
-              <div class="sheet-handle"></div>
+            <div class="number-pad">
+              <button class="num-key" type="button" data-number="1">
+                <span class="key-digit">1</span>
+              </button>
+              <button class="num-key" type="button" data-number="2">
+                <span class="key-digit">2</span>
+                <span class="key-sub">ABC</span>
+              </button>
+              <button class="num-key" type="button" data-number="3">
+                <span class="key-digit">3</span>
+                <span class="key-sub">DEF</span>
+              </button>
 
-              <div class="number-pad">
-                <button class="num-key" type="button" data-number="1">1</button>
-                <button class="num-key" type="button" data-number="2">2</button>
-                <button class="num-key" type="button" data-number="3">3</button>
+              <button class="num-key" type="button" data-number="4">
+                <span class="key-digit">4</span>
+                <span class="key-sub">GHI</span>
+              </button>
+              <button class="num-key" type="button" data-number="5">
+                <span class="key-digit">5</span>
+                <span class="key-sub">JKL</span>
+              </button>
+              <button class="num-key" type="button" data-number="6">
+                <span class="key-digit">6</span>
+                <span class="key-sub">MNO</span>
+              </button>
 
-                <button class="num-key" type="button" data-number="4">4</button>
-                <button class="num-key" type="button" data-number="5">5</button>
-                <button class="num-key" type="button" data-number="6">6</button>
+              <button class="num-key" type="button" data-number="7">
+                <span class="key-digit">7</span>
+                <span class="key-sub">PQRS</span>
+              </button>
+              <button class="num-key" type="button" data-number="8">
+                <span class="key-digit">8</span>
+                <span class="key-sub">TUV</span>
+              </button>
+              <button class="num-key" type="button" data-number="9">
+                <span class="key-digit">9</span>
+                <span class="key-sub">WXYZ</span>
+              </button>
 
-                <button class="num-key" type="button" data-number="7">7</button>
-                <button class="num-key" type="button" data-number="8">8</button>
-                <button class="num-key" type="button" data-number="9">9</button>
-
-                <button id="clearPasswordBtn" class="num-key action-key" type="button">C</button>
-                <button class="num-key zero-key" type="button" data-number="0">0</button>
-                <button id="deletePasswordBtn" class="num-key action-key" type="button">⌫</button>
-              </div>
-
-              <button id="unlockBtn" type="button">Mở khóa</button>
+              <button id="closeModalBtn" class="num-key text-action-key" type="button">Hủy</button>
+              <button class="num-key" type="button" data-number="0">
+                <span class="key-digit">0</span>
+              </button>
+              <button id="deletePasswordBtn" class="num-key text-action-key" type="button">Xóa</button>
             </div>
           </div>
         </div>
 
-        <!-- Màn hình bên trong két -->
+        <!-- ======== MÀN HÌNH BÊN TRONG KÉT ======== -->
         <section id="vaultPage" class="vault-page hidden">
+          <div class="vault-deco vault-deco-1"></div>
+          <div class="vault-deco vault-deco-2"></div>
+          <div class="vault-deco vault-deco-3"></div>
+
           <div class="vault-app">
+            <!-- Greeting -->
+            <div class="vault-greeting">
+              <span class="greeting-wave">💗</span>
+              <span id="greetingText">Chào cưng, hôm nay có gì mới?</span>
+            </div>
+
+            <!-- Topbar -->
             <div class="vault-topbar">
               <div class="vault-brand">
                 <div class="vault-brand-icon">
                   <span class="material-symbols-rounded brand-symbol">lock</span>
                 </div>
-
                 <div>
                   <h2>Két Bí Mật</h2>
-                  <p>Bí mật về cô ấy</p>
+                  <p id="vaultSubtitle">Bí mật về cô ấy</p>
                 </div>
               </div>
-
-              <div class="vault-count">3</div>
+              <div id="vaultCount" class="vault-count">0</div>
             </div>
 
+            <!-- ===== VAULT TABS ===== -->
             <div class="vault-tabs">
-              <div class="vault-tab active">
+              <div class="vault-tab active" data-tab="favorites">
                 <span><i class="material-symbols-rounded tab-icon">favorite</i></span>
                 <p>Sở thích</p>
               </div>
-
-              <div class="vault-tab">
+              <div class="vault-tab" data-tab="info">
                 <span><i class="material-symbols-rounded tab-icon">person</i></span>
                 <p>Thông tin</p>
               </div>
-
-              <div class="vault-tab">
+              <div class="vault-tab" data-tab="notes">
                 <span><i class="material-symbols-rounded tab-icon">edit_note</i></span>
                 <p>Ghi chú</p>
               </div>
-
-              <div class="vault-tab">
+              <div class="vault-tab" data-tab="dates">
                 <span><i class="material-symbols-rounded tab-icon">calendar_month</i></span>
                 <p>Ngày</p>
               </div>
-
-              <div class="vault-tab">
+              <div class="vault-tab" data-tab="mood">
                 <span><i class="material-symbols-rounded tab-icon">mood</i></span>
                 <p>Tâm trạng</p>
               </div>
             </div>
 
-            <div class="vault-switch">
-              <button class="switch-btn active" type="button">💗 Thích</button>
-              <button class="switch-btn" type="button">🤍 Không thích</button>
-            </div>
-
-            <div class="food-row">
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">local_cafe</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">cookie</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">ramen_dining</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">local_pizza</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">cake</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">nutrition</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">icecream</i>
-              </button>
-
-              <button class="food-icon" type="button">
-                <i class="material-symbols-rounded">restaurant</i>
-              </button>
-            </div>
-
-            <div class="vault-input-row">
-              <input type="text" placeholder="Thêm điều em thích...">
-              <button class="round-add-btn" type="button" aria-label="Thêm"></button>
-            </div>
-
-            <div class="quick-title">Gợi ý nhanh</div>
-
-            <div class="quick-tags">
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">local_cafe</i>
-                <span>Trà sữa</span>
+            <!-- ===== TAB CONTENT: SỞ THÍCH ===== -->
+            <div id="tabFavorites" class="tab-content active" data-tab-content="favorites">
+              <div class="vault-switch">
+                <button class="switch-btn active" type="button" data-filter="like">💗 Thích</button>
+                <button class="switch-btn" type="button" data-filter="dislike">🤍 Không thích</button>
               </div>
 
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">ramen_dining</i>
-                <span>Phở</span>
+              <div class="vault-input-row">
+                <input id="favInput" type="text" placeholder="Thêm điều em thích..." maxlength="50">
+                <button id="addFavBtn" class="round-add-btn" type="button" aria-label="Thêm">
+                  <i class="material-symbols-rounded">add</i>
+                </button>
               </div>
 
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">local_pizza</i>
-                <span>Pizza</span>
-              </div>
-
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">cake</i>
-                <span>Bánh ngọt</span>
-              </div>
-
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">icecream</i>
-                <span>Kem</span>
-              </div>
-
-              <div class="quick-tag">
-                <i class="material-symbols-rounded">bakery_dining</i>
-                <span>Bánh mì</span>
-              </div>
-            </div>
-
-            <div class="memory-list">
-              <div class="memory-card-item">
-                <div class="memory-left">
-                  <div class="memory-emoji">
-                    <i class="material-symbols-rounded">cookie</i>
-                  </div>
-
-                  <div class="memory-text">Chocolate</div>
+              <div class="quick-title">Gợi ý nhanh</div>
+              <div class="quick-tags" id="quickTags">
+                <div class="quick-tag" data-tag="Trà sữa">
+                  <i class="material-symbols-rounded">local_cafe</i>
+                  <span>Trà sữa</span>
                 </div>
-
-                <button class="delete-btn" type="button" aria-label="Xóa"></button>
+                <div class="quick-tag" data-tag="Phở">
+                  <i class="material-symbols-rounded">ramen_dining</i>
+                  <span>Phở</span>
+                </div>
+                <div class="quick-tag" data-tag="Pizza">
+                  <i class="material-symbols-rounded">local_pizza</i>
+                  <span>Pizza</span>
+                </div>
+                <div class="quick-tag" data-tag="Bánh ngọt">
+                  <i class="material-symbols-rounded">cake</i>
+                  <span>Bánh ngọt</span>
+                </div>
+                <div class="quick-tag" data-tag="Kem">
+                  <i class="material-symbols-rounded">icecream</i>
+                  <span>Kem</span>
+                </div>
+                <div class="quick-tag" data-tag="Bánh mì">
+                  <i class="material-symbols-rounded">bakery_dining</i>
+                  <span>Bánh mì</span>
+                </div>
               </div>
 
-              <div class="memory-card-item">
-                <div class="memory-left">
-                  <div class="memory-emoji">
-                    <i class="material-symbols-rounded">nutrition</i>
-                  </div>
+              <div class="section-label" id="favSectionLabel">Đã lưu</div>
+              <div class="memory-list" id="favList"></div>
+            </div>
 
-                  <div class="memory-text">Trái cây</div>
+            <!-- ===== TAB CONTENT: THÔNG TIN ===== -->
+            <div id="tabInfo" class="tab-content" data-tab-content="info">
+              <div class="info-form">
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">badge</i> Tên</label>
+                  <input type="text" id="infoName" placeholder="Tên của bé..." maxlength="30">
                 </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">cake</i> Sinh nhật</label>
+                  <input type="date" id="infoBirthday">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">star</i> Cung hoàng đạo</label>
+                  <input type="text" id="infoZodiac" placeholder="Ví dụ: Bạch Dương ♈" maxlength="20">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">palette</i> Màu yêu thích</label>
+                  <input type="text" id="infoColor" placeholder="Ví dụ: Hồng pastel 🩷" maxlength="20">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">music_note</i> Bài hát yêu thích</label>
+                  <input type="text" id="infoSong" placeholder="Tên bài hát..." maxlength="50">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">movie</i> Phim yêu thích</label>
+                  <input type="text" id="infoMovie" placeholder="Tên phim..." maxlength="50">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">pets</i> Thú cưng</label>
+                  <input type="text" id="infoPet" placeholder="Ví dụ: Mèo tên Mochi 🐱" maxlength="30">
+                </div>
+                <div class="info-field">
+                  <label><i class="material-symbols-rounded">description</i> Ghi chú thêm</label>
+                  <textarea id="infoExtra" placeholder="Điều gì đặc biệt khác..." rows="3" maxlength="200"></textarea>
+                </div>
+              </div>
+              <button id="saveInfoBtn" class="save-btn" type="button">
+                <i class="material-symbols-rounded">check</i> Lưu thông tin
+              </button>
+            </div>
 
-                <button class="delete-btn" type="button" aria-label="Xóa"></button>
+            <!-- ===== TAB CONTENT: GHI CHÚ ===== -->
+            <div id="tabNotes" class="tab-content" data-tab-content="notes">
+              <div class="vault-input-row">
+                <input id="noteInput" type="text" placeholder="Viết ghi chú mới..." maxlength="200">
+                <button id="addNoteBtn" class="round-add-btn" type="button" aria-label="Thêm ghi chú">
+                  <i class="material-symbols-rounded">add</i>
+                </button>
+              </div>
+              <div class="section-label">Tất cả ghi chú</div>
+              <div class="note-list" id="noteList"></div>
+            </div>
+
+            <!-- ===== TAB CONTENT: NGÀY QUAN TRỌNG ===== -->
+            <div id="tabDates" class="tab-content" data-tab-content="dates">
+              <div class="date-input-group">
+                <div class="vault-input-row">
+                  <input id="dateTitle" type="text" placeholder="Tên sự kiện (vd: Ngày quen nhau)" maxlength="40">
+                </div>
+                <div class="vault-input-row">
+                  <input id="dateValue" type="date">
+                  <button id="addDateBtn" class="round-add-btn" type="button" aria-label="Thêm ngày">
+                    <i class="material-symbols-rounded">add</i>
+                  </button>
+                </div>
+              </div>
+              <div class="section-label">Những ngày quan trọng</div>
+              <div class="date-list" id="dateList"></div>
+            </div>
+
+            <!-- ===== TAB CONTENT: TÂM TRẠNG ===== -->
+            <div id="tabMood" class="tab-content" data-tab-content="mood">
+              <div class="mood-today">
+                <p class="mood-question">Hôm nay bé cảm thấy thế nào?</p>
+                <div class="mood-picker" id="moodPicker">
+                  <button class="mood-btn" data-mood="😍" type="button">😍</button>
+                  <button class="mood-btn" data-mood="😊" type="button">😊</button>
+                  <button class="mood-btn" data-mood="😐" type="button">😐</button>
+                  <button class="mood-btn" data-mood="😢" type="button">😢</button>
+                  <button class="mood-btn" data-mood="😡" type="button">😡</button>
+                  <button class="mood-btn" data-mood="🥰" type="button">🥰</button>
+                  <button class="mood-btn" data-mood="😴" type="button">😴</button>
+                  <button class="mood-btn" data-mood="🤔" type="button">🤔</button>
+                </div>
+              </div>
+              <div class="section-label">Nhật ký tâm trạng</div>
+              <div class="mood-log" id="moodLog"></div>
+            </div>
+
+            <!-- ===== TAB CONTENT: CÀI ĐẶT / ADMIN ===== -->
+            <div id="tabSettings" class="tab-content" data-tab-content="settings">
+              <div class="settings-section">
+                <div class="settings-title">
+                  <i class="material-symbols-rounded">info</i> Thông tin Két
+                </div>
+                <div class="settings-info" id="settingsInfo">
+                  <p>Mật mã hiện tại: <strong id="currentPasscode">****</strong></p>
+                  <p>Vai trò: <span id="currentRole">User</span></p>
+                </div>
+              </div>
+
+              <!-- Admin Panel - Chỉ hiện cho 0908 -->
+              <div id="adminPanel" class="admin-panel hidden">
+                <div class="settings-title admin-title">
+                  <i class="material-symbols-rounded">admin_panel_settings</i> Bảng Điều Khiển Admin
+                </div>
+                <p class="admin-desc">Xem toàn bộ dữ liệu của tất cả người dùng trên thiết bị này.</p>
+                <div id="adminVaultList" class="admin-vault-list"></div>
               </div>
             </div>
+
           </div>
 
+          <!-- Bottom Navigation -->
           <div class="bottom-nav">
-            <div class="bottom-item">
+            <div class="bottom-item active" data-nav="favorites">
               <i class="material-symbols-rounded nav-icon">home</i>
               <span>Trang chủ</span>
             </div>
-
-            <div class="bottom-item">
+            <div class="bottom-item" data-nav="notes">
               <i class="material-symbols-rounded nav-icon">edit_note</i>
               <span>Ghi chú</span>
             </div>
-
-            <div class="bottom-item active">
-              <i class="material-symbols-rounded nav-icon">lock</i>
-              <span>Vault</span>
+            <div class="bottom-item" data-nav="mood">
+              <i class="material-symbols-rounded nav-icon">mood</i>
+              <span>Tâm trạng</span>
             </div>
-
-            <div class="bottom-item">
+            <div class="bottom-item" data-nav="dates">
               <i class="material-symbols-rounded nav-icon">calendar_month</i>
               <span>Ngày</span>
             </div>
-
-            <div class="bottom-item">
+            <div class="bottom-item" data-nav="settings">
               <i class="material-symbols-rounded nav-icon">settings</i>
               <span>Cài đặt</span>
             </div>
           </div>
 
-          <button id="lockBtn" class="lock-floating-btn" type="button">Khóa</button>
+          <button id="lockBtn" class="lock-floating-btn" type="button">
+            <i class="material-symbols-rounded">lock</i>
+            <span>Khóa két</span>
+          </button>
         </section>
       </div>
     </div>
