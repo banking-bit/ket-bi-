@@ -2,404 +2,344 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="theme-color" content="#f8b8c8">
-
   <title>Két Bí Mật</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
-  >
-  <link
-    rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0"
-  >
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0,0">
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 </head>
-
 <body>
   <main class="preview-area">
     <div class="phone-frame">
-      <div class="phone-status-bar">
-        <span class="status-time">9:41</span>
-        <div class="status-icons">
-          <span class="status-signal">●●●●</span>
-          <span class="status-wifi">⏣</span>
-          <span class="status-battery">🔋</span>
-        </div>
-      </div>
       <div class="phone-notch"></div>
-
       <div class="phone-screen">
-        <!-- ======== MÀN HÌNH CHỦ ======== -->
+
+        <!-- ======== HOME ======== -->
         <main id="homePage" class="app home-screen">
           <div class="home-decoration heart-one">♡</div>
           <div class="home-decoration heart-two">✦</div>
           <div class="home-decoration heart-three">♡</div>
           <div class="home-decoration star-one">✧</div>
           <div class="home-decoration dot-one">●</div>
-
           <section class="card home-card">
             <div class="home-badge">PRIVATE VAULT</div>
-
-            <div class="home-icon-wrap">
-              <img src="icons/icon-512.png" alt="Két Bí Mật" class="app-icon">
-            </div>
-
+            <div class="home-icon-wrap"><img src="icons/icon-512.png" alt="Két Bí Mật" class="app-icon"></div>
             <h1>Két Bí Mật</h1>
-
-            <p>
-              Một nơi nhỏ xinh để cất giữ sở thích, thói quen
-              và những điều cần nhớ về cô gái ấy.
-            </p>
-
-            <div class="home-chips">
-              <span>Sở thích</span>
-              <span>Thói quen</span>
-              <span>Bí mật</span>
-            </div>
-
-            <button id="openVaultBtn" class="open-vault-btn" type="button">
-              <span>💗</span>
-              Mở két
-            </button>
+            <p>Một nơi nhỏ xinh để cất giữ sở thích, thói quen và những điều cần nhớ.</p>
+            <div class="home-chips"><span>Sở thích</span><span>Thói quen</span><span>Bí mật</span></div>
+            <button id="openVaultBtn" class="open-vault-btn" type="button"><span>💗</span> Mở két</button>
           </section>
         </main>
 
-        <!-- ======== MÀN HÌNH NHẬP MẬT MÃ (iOS 26) ======== -->
+        <!-- ======== PASSCODE ======== -->
         <div id="passwordModal" class="modal hidden">
           <div class="passcode-shell">
-            <input
-              id="passwordInput"
-              class="hidden-password-input"
-              type="password"
-              autocomplete="off"
-              readonly
-            >
-
-            <div class="passcode-top">
-              <svg class="ios-heart-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#heartGrad)"/>
-                <defs>
-                  <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ff758c" />
-                    <stop offset="100%" stop-color="#ff7eb3" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <h2 id="passcodeTitle">Nhập mật mã</h2>
-              <p id="passcodeSubtitle" class="passcode-subtitle"></p>
+            <input id="passwordInput" class="hidden-password-input" type="password" autocomplete="off" readonly>
+            <!-- Step 1 -->
+            <div id="passcodeStep1" class="passcode-step">
+              <div class="passcode-top">
+                <svg class="ios-heart-svg" viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#hG)"/><defs><linearGradient id="hG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff758c"/><stop offset="100%" stop-color="#ff7eb3"/></linearGradient></defs></svg>
+                <h2 id="passcodeTitle">Nhập mật mã</h2>
+                <p id="passcodeSubtitle" class="passcode-subtitle"></p>
+              </div>
+              <div id="passcodeDots" class="passcode-dots"><span></span><span></span><span></span><span></span></div>
+              <div class="number-pad">
+                <button class="num-key" type="button" data-number="1"><span class="key-digit">1</span></button>
+                <button class="num-key" type="button" data-number="2"><span class="key-digit">2</span><span class="key-sub">ABC</span></button>
+                <button class="num-key" type="button" data-number="3"><span class="key-digit">3</span><span class="key-sub">DEF</span></button>
+                <button class="num-key" type="button" data-number="4"><span class="key-digit">4</span><span class="key-sub">GHI</span></button>
+                <button class="num-key" type="button" data-number="5"><span class="key-digit">5</span><span class="key-sub">JKL</span></button>
+                <button class="num-key" type="button" data-number="6"><span class="key-digit">6</span><span class="key-sub">MNO</span></button>
+                <button class="num-key" type="button" data-number="7"><span class="key-digit">7</span><span class="key-sub">PQRS</span></button>
+                <button class="num-key" type="button" data-number="8"><span class="key-digit">8</span><span class="key-sub">TUV</span></button>
+                <button class="num-key" type="button" data-number="9"><span class="key-digit">9</span><span class="key-sub">WXYZ</span></button>
+                <button id="closeModalBtn" class="num-key text-action-key" type="button">Hủy</button>
+                <button class="num-key" type="button" data-number="0"><span class="key-digit">0</span></button>
+                <button id="deletePasswordBtn" class="num-key text-action-key" type="button">Xóa</button>
+              </div>
+              <button id="goRegisterBtn" class="register-link" type="button"><i class="material-symbols-rounded">add_circle</i> Đăng ký két mới</button>
             </div>
-
-            <div id="passcodeDots" class="passcode-dots">
-              <span></span><span></span><span></span><span></span>
-            </div>
-
-            <div class="number-pad">
-              <button class="num-key" type="button" data-number="1">
-                <span class="key-digit">1</span>
-              </button>
-              <button class="num-key" type="button" data-number="2">
-                <span class="key-digit">2</span>
-                <span class="key-sub">ABC</span>
-              </button>
-              <button class="num-key" type="button" data-number="3">
-                <span class="key-digit">3</span>
-                <span class="key-sub">DEF</span>
-              </button>
-
-              <button class="num-key" type="button" data-number="4">
-                <span class="key-digit">4</span>
-                <span class="key-sub">GHI</span>
-              </button>
-              <button class="num-key" type="button" data-number="5">
-                <span class="key-digit">5</span>
-                <span class="key-sub">JKL</span>
-              </button>
-              <button class="num-key" type="button" data-number="6">
-                <span class="key-digit">6</span>
-                <span class="key-sub">MNO</span>
-              </button>
-
-              <button class="num-key" type="button" data-number="7">
-                <span class="key-digit">7</span>
-                <span class="key-sub">PQRS</span>
-              </button>
-              <button class="num-key" type="button" data-number="8">
-                <span class="key-digit">8</span>
-                <span class="key-sub">TUV</span>
-              </button>
-              <button class="num-key" type="button" data-number="9">
-                <span class="key-digit">9</span>
-                <span class="key-sub">WXYZ</span>
-              </button>
-
-              <button id="closeModalBtn" class="num-key text-action-key" type="button">Hủy</button>
-              <button class="num-key" type="button" data-number="0">
-                <span class="key-digit">0</span>
-              </button>
-              <button id="deletePasswordBtn" class="num-key text-action-key" type="button">Xóa</button>
+            <!-- Step 2 -->
+            <div id="passcodeStep2" class="passcode-step hidden">
+              <div class="passcode-top">
+                <svg class="ios-heart-svg" viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="url(#hG)"/></svg>
+                <h2>Nhập tên đăng nhập</h2>
+                <p id="usernameSubtitle" class="passcode-subtitle"></p>
+              </div>
+              <div class="username-form">
+                <input id="loginUsername" type="text" placeholder="Tên đăng nhập của bạn..." autocomplete="off" maxlength="20">
+                <button id="loginBtn" class="action-btn primary-btn" type="button"><i class="material-symbols-rounded">login</i> Đăng nhập</button>
+                <button id="backToStep1" class="action-btn ghost-btn" type="button"><i class="material-symbols-rounded">arrow_back</i> Quay lại</button>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- ======== MÀN HÌNH BÊN TRONG KÉT ======== -->
+        <!-- ======== REGISTER ======== -->
+        <div id="registerModal" class="modal hidden">
+          <div class="register-shell">
+            <button id="closeRegisterBtn" class="back-btn" type="button"><i class="material-symbols-rounded">arrow_back</i></button>
+            <div class="register-header"><div class="register-icon">🔐</div><h2>Đăng ký Két Bí Mật</h2><p>Tạo két riêng — an toàn và bí mật!</p></div>
+            <div class="register-form">
+              <div class="reg-field"><label><i class="material-symbols-rounded">badge</i> Họ và tên <span class="required">*</span></label><input id="regFullName" type="text" placeholder="Nhập họ và tên..." maxlength="40"></div>
+              <div class="reg-field"><label><i class="material-symbols-rounded">person</i> Tên đăng nhập <span class="required">*</span></label><input id="regUsername" type="text" placeholder="Tên đăng nhập (duy nhất)..." maxlength="20"></div>
+              <div class="reg-field"><label><i class="material-symbols-rounded">lock</i> Mật mã (4 số) <span class="required">*</span></label><input id="regPasscode" type="password" placeholder="Nhập mật mã 4 số..." maxlength="4" inputmode="numeric"></div>
+              <div class="reg-field"><label><i class="material-symbols-rounded">lock_reset</i> Nhập lại mật mã <span class="required">*</span></label><input id="regPasscodeConfirm" type="password" placeholder="Nhập lại mật mã..." maxlength="4" inputmode="numeric"></div>
+              <p id="regError" class="form-error"></p>
+              <button id="registerBtn" class="action-btn primary-btn" type="button"><i class="material-symbols-rounded">how_to_reg</i> Tạo Két Bí Mật</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======== VAULT ======== -->
         <section id="vaultPage" class="vault-page hidden">
           <div class="vault-deco vault-deco-1"></div>
           <div class="vault-deco vault-deco-2"></div>
           <div class="vault-deco vault-deco-3"></div>
-
           <div class="vault-app">
-            <!-- Greeting -->
-            <div class="vault-greeting">
-              <span class="greeting-wave">💗</span>
-              <span id="greetingText">Chào cưng, hôm nay có gì mới?</span>
+
+            <!-- Greeting / Search -->
+            <div class="vault-greeting" id="greetingBar">
+              <div id="greetingNormal" class="greeting-normal">
+                <span class="greeting-wave">💗</span>
+                <span id="greetingText">Có gì mới hôm nay?</span>
+                <i class="material-symbols-rounded greeting-search-icon">search</i>
+              </div>
+              <div id="greetingSearch" class="greeting-search hidden">
+                <i class="material-symbols-rounded search-icon-left">search</i>
+                <input id="searchInput" type="text" placeholder="Tìm kiếm trong két..." autocomplete="off">
+                <button id="closeSearchBtn" type="button"><i class="material-symbols-rounded">close</i></button>
+              </div>
             </div>
+            <div id="searchResults" class="search-results hidden"></div>
 
             <!-- Topbar -->
             <div class="vault-topbar">
               <div class="vault-brand">
-                <div class="vault-brand-icon">
-                  <span class="material-symbols-rounded brand-symbol">lock</span>
-                </div>
-                <div>
-                  <h2>Két Bí Mật</h2>
-                  <p id="vaultSubtitle">Bí mật về cô ấy</p>
-                </div>
+                <div class="vault-brand-icon"><span class="material-symbols-rounded brand-symbol">lock</span></div>
+                <div><h2>Két Bí Mật</h2><p id="vaultSubtitle">Bí mật về cô ấy</p></div>
               </div>
               <div id="vaultCount" class="vault-count">0</div>
             </div>
 
-            <!-- ===== VAULT TABS ===== -->
-            <div class="vault-tabs">
-              <div class="vault-tab active" data-tab="favorites">
-                <span><i class="material-symbols-rounded tab-icon">favorite</i></span>
-                <p>Sở thích</p>
-              </div>
-              <div class="vault-tab" data-tab="info">
-                <span><i class="material-symbols-rounded tab-icon">person</i></span>
-                <p>Thông tin</p>
-              </div>
-              <div class="vault-tab" data-tab="notes">
-                <span><i class="material-symbols-rounded tab-icon">edit_note</i></span>
-                <p>Ghi chú</p>
-              </div>
-              <div class="vault-tab" data-tab="dates">
-                <span><i class="material-symbols-rounded tab-icon">calendar_month</i></span>
-                <p>Ngày</p>
-              </div>
-              <div class="vault-tab" data-tab="mood">
-                <span><i class="material-symbols-rounded tab-icon">mood</i></span>
-                <p>Tâm trạng</p>
-              </div>
-            </div>
-
-            <!-- ===== TAB CONTENT: SỞ THÍCH ===== -->
+            <!-- ===== SỞ THÍCH ===== -->
             <div id="tabFavorites" class="tab-content active" data-tab-content="favorites">
               <div class="vault-switch">
                 <button class="switch-btn active" type="button" data-filter="like">💗 Thích</button>
                 <button class="switch-btn" type="button" data-filter="dislike">🤍 Không thích</button>
               </div>
-
               <div class="vault-input-row">
                 <input id="favInput" type="text" placeholder="Thêm điều em thích..." maxlength="50">
-                <button id="addFavBtn" class="round-add-btn" type="button" aria-label="Thêm">
-                  <i class="material-symbols-rounded">add</i>
-                </button>
+                <button id="favCustomizeToggle" class="round-icon-btn" type="button" title="Tùy chỉnh"><i class="material-symbols-rounded">palette</i></button>
+                <button id="addFavBtn" class="round-add-btn" type="button"><i class="material-symbols-rounded">add</i></button>
               </div>
-
+              <div id="favCustomize" class="customize-panel hidden">
+                <div class="customize-row"><span class="customize-label">Icon</span>
+                  <div class="icon-grid" id="favIconGrid">
+                    <button class="icon-opt active" data-icon="favorite"><i class="material-symbols-rounded">favorite</i></button>
+                    <button class="icon-opt" data-icon="star"><i class="material-symbols-rounded">star</i></button>
+                    <button class="icon-opt" data-icon="local_cafe"><i class="material-symbols-rounded">local_cafe</i></button>
+                    <button class="icon-opt" data-icon="cookie"><i class="material-symbols-rounded">cookie</i></button>
+                    <button class="icon-opt" data-icon="cake"><i class="material-symbols-rounded">cake</i></button>
+                    <button class="icon-opt" data-icon="icecream"><i class="material-symbols-rounded">icecream</i></button>
+                    <button class="icon-opt" data-icon="local_pizza"><i class="material-symbols-rounded">local_pizza</i></button>
+                    <button class="icon-opt" data-icon="ramen_dining"><i class="material-symbols-rounded">ramen_dining</i></button>
+                    <button class="icon-opt" data-icon="restaurant"><i class="material-symbols-rounded">restaurant</i></button>
+                    <button class="icon-opt" data-icon="music_note"><i class="material-symbols-rounded">music_note</i></button>
+                    <button class="icon-opt" data-icon="movie"><i class="material-symbols-rounded">movie</i></button>
+                    <button class="icon-opt" data-icon="book"><i class="material-symbols-rounded">book</i></button>
+                    <button class="icon-opt" data-icon="pets"><i class="material-symbols-rounded">pets</i></button>
+                    <button class="icon-opt" data-icon="sports_esports"><i class="material-symbols-rounded">sports_esports</i></button>
+                    <button class="icon-opt" data-icon="shopping_bag"><i class="material-symbols-rounded">shopping_bag</i></button>
+                  </div>
+                </div>
+                <div class="customize-row"><span class="customize-label">Màu chữ</span>
+                  <div class="color-grid" id="favColorGrid">
+                    <button class="color-dot active" data-color=""><span>Mặc định</span></button>
+                    <button class="color-dot" data-color="#e8809c" style="--dot:#e8809c"></button>
+                    <button class="color-dot" data-color="#c5a3e8" style="--dot:#c5a3e8"></button>
+                    <button class="color-dot" data-color="#5c9ced" style="--dot:#5c9ced"></button>
+                    <button class="color-dot" data-color="#a8d5a2" style="--dot:#a8d5a2"></button>
+                    <button class="color-dot" data-color="#f5a623" style="--dot:#f5a623"></button>
+                    <button class="color-dot" data-color="#e55577" style="--dot:#e55577"></button>
+                    <button class="color-dot" data-color="#8b6914" style="--dot:#8b6914"></button>
+                  </div>
+                </div>
+              </div>
               <div class="quick-title">Gợi ý nhanh</div>
               <div class="quick-tags" id="quickTags">
-                <div class="quick-tag" data-tag="Trà sữa">
-                  <i class="material-symbols-rounded">local_cafe</i>
-                  <span>Trà sữa</span>
-                </div>
-                <div class="quick-tag" data-tag="Phở">
-                  <i class="material-symbols-rounded">ramen_dining</i>
-                  <span>Phở</span>
-                </div>
-                <div class="quick-tag" data-tag="Pizza">
-                  <i class="material-symbols-rounded">local_pizza</i>
-                  <span>Pizza</span>
-                </div>
-                <div class="quick-tag" data-tag="Bánh ngọt">
-                  <i class="material-symbols-rounded">cake</i>
-                  <span>Bánh ngọt</span>
-                </div>
-                <div class="quick-tag" data-tag="Kem">
-                  <i class="material-symbols-rounded">icecream</i>
-                  <span>Kem</span>
-                </div>
-                <div class="quick-tag" data-tag="Bánh mì">
-                  <i class="material-symbols-rounded">bakery_dining</i>
-                  <span>Bánh mì</span>
-                </div>
+                <div class="quick-tag" data-tag="Trà sữa"><i class="material-symbols-rounded">local_cafe</i><span>Trà sữa</span></div>
+                <div class="quick-tag" data-tag="Phở"><i class="material-symbols-rounded">ramen_dining</i><span>Phở</span></div>
+                <div class="quick-tag" data-tag="Pizza"><i class="material-symbols-rounded">local_pizza</i><span>Pizza</span></div>
+                <div class="quick-tag" data-tag="Bánh ngọt"><i class="material-symbols-rounded">cake</i><span>Bánh ngọt</span></div>
+                <div class="quick-tag" data-tag="Kem"><i class="material-symbols-rounded">icecream</i><span>Kem</span></div>
+                <div class="quick-tag" data-tag="Bánh mì"><i class="material-symbols-rounded">bakery_dining</i><span>Bánh mì</span></div>
               </div>
-
               <div class="section-label" id="favSectionLabel">Đã lưu</div>
               <div class="memory-list" id="favList"></div>
             </div>
 
-            <!-- ===== TAB CONTENT: THÔNG TIN ===== -->
+            <!-- ===== THÔNG TIN ===== -->
             <div id="tabInfo" class="tab-content" data-tab-content="info">
               <div class="info-form">
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">badge</i> Tên</label>
-                  <input type="text" id="infoName" placeholder="Tên của bé..." maxlength="30">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">cake</i> Sinh nhật</label>
-                  <input type="date" id="infoBirthday">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">star</i> Cung hoàng đạo</label>
-                  <input type="text" id="infoZodiac" placeholder="Ví dụ: Bạch Dương ♈" maxlength="20">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">palette</i> Màu yêu thích</label>
-                  <input type="text" id="infoColor" placeholder="Ví dụ: Hồng pastel 🩷" maxlength="20">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">music_note</i> Bài hát yêu thích</label>
-                  <input type="text" id="infoSong" placeholder="Tên bài hát..." maxlength="50">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">movie</i> Phim yêu thích</label>
-                  <input type="text" id="infoMovie" placeholder="Tên phim..." maxlength="50">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">pets</i> Thú cưng</label>
-                  <input type="text" id="infoPet" placeholder="Ví dụ: Mèo tên Mochi 🐱" maxlength="30">
-                </div>
-                <div class="info-field">
-                  <label><i class="material-symbols-rounded">description</i> Ghi chú thêm</label>
-                  <textarea id="infoExtra" placeholder="Điều gì đặc biệt khác..." rows="3" maxlength="200"></textarea>
-                </div>
+                <div class="info-field"><label><i class="material-symbols-rounded">badge</i> Tên</label><input type="text" id="infoName" placeholder="Tên của bé..." maxlength="30"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">cake</i> Sinh nhật</label><input type="date" id="infoBirthday"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">star</i> Cung hoàng đạo</label><input type="text" id="infoZodiac" placeholder="Ví dụ: Bạch Dương ♈" maxlength="20"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">palette</i> Màu yêu thích</label><input type="text" id="infoColor" placeholder="Ví dụ: Hồng pastel 🩷" maxlength="20"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">music_note</i> Bài hát yêu thích</label><input type="text" id="infoSong" placeholder="Tên bài hát..." maxlength="50"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">movie</i> Phim yêu thích</label><input type="text" id="infoMovie" placeholder="Tên phim..." maxlength="50"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">pets</i> Thú cưng</label><input type="text" id="infoPet" placeholder="Ví dụ: Mèo tên Mochi 🐱" maxlength="30"></div>
+                <div class="info-field"><label><i class="material-symbols-rounded">description</i> Ghi chú thêm</label><textarea id="infoExtra" placeholder="Điều gì đặc biệt khác..." rows="3" maxlength="200"></textarea></div>
               </div>
-              <button id="saveInfoBtn" class="save-btn" type="button">
-                <i class="material-symbols-rounded">check</i> Lưu thông tin
-              </button>
+              <button id="saveInfoBtn" class="action-btn primary-btn" type="button"><i class="material-symbols-rounded">check</i> Lưu thông tin</button>
             </div>
 
-            <!-- ===== TAB CONTENT: GHI CHÚ ===== -->
+            <!-- ===== GHI CHÚ ===== -->
             <div id="tabNotes" class="tab-content" data-tab-content="notes">
               <div class="vault-input-row">
                 <input id="noteInput" type="text" placeholder="Viết ghi chú mới..." maxlength="200">
-                <button id="addNoteBtn" class="round-add-btn" type="button" aria-label="Thêm ghi chú">
-                  <i class="material-symbols-rounded">add</i>
-                </button>
+                <button id="noteCustomizeToggle" class="round-icon-btn" type="button" title="Tùy chỉnh"><i class="material-symbols-rounded">palette</i></button>
+                <button id="noteCameraBtn" class="round-icon-btn camera-btn" type="button" title="Chụp / Tải ảnh"><i class="material-symbols-rounded">photo_camera</i></button>
+                <button id="addNoteBtn" class="round-add-btn" type="button"><i class="material-symbols-rounded">add</i></button>
+              </div>
+              <input id="noteFileInput" type="file" accept="image/*,video/*" class="hidden">
+              <div id="noteMediaPreview" class="media-preview hidden">
+                <div id="noteMediaContainer"></div>
+                <button id="removeNoteMedia" type="button"><i class="material-symbols-rounded">close</i></button>
+              </div>
+              <div id="noteCustomize" class="customize-panel hidden">
+                <div class="customize-row"><span class="customize-label">Icon</span>
+                  <div class="icon-grid" id="noteIconGrid">
+                    <button class="icon-opt active" data-icon="edit_note"><i class="material-symbols-rounded">edit_note</i></button>
+                    <button class="icon-opt" data-icon="description"><i class="material-symbols-rounded">description</i></button>
+                    <button class="icon-opt" data-icon="lightbulb"><i class="material-symbols-rounded">lightbulb</i></button>
+                    <button class="icon-opt" data-icon="bookmark"><i class="material-symbols-rounded">bookmark</i></button>
+                    <button class="icon-opt" data-icon="push_pin"><i class="material-symbols-rounded">push_pin</i></button>
+                    <button class="icon-opt" data-icon="flag"><i class="material-symbols-rounded">flag</i></button>
+                    <button class="icon-opt" data-icon="favorite"><i class="material-symbols-rounded">favorite</i></button>
+                    <button class="icon-opt" data-icon="star"><i class="material-symbols-rounded">star</i></button>
+                    <button class="icon-opt" data-icon="priority_high"><i class="material-symbols-rounded">priority_high</i></button>
+                  </div>
+                </div>
+                <div class="customize-row"><span class="customize-label">Màu chữ</span>
+                  <div class="color-grid" id="noteColorGrid">
+                    <button class="color-dot active" data-color=""><span>Mặc định</span></button>
+                    <button class="color-dot" data-color="#e8809c" style="--dot:#e8809c"></button>
+                    <button class="color-dot" data-color="#c5a3e8" style="--dot:#c5a3e8"></button>
+                    <button class="color-dot" data-color="#5c9ced" style="--dot:#5c9ced"></button>
+                    <button class="color-dot" data-color="#a8d5a2" style="--dot:#a8d5a2"></button>
+                    <button class="color-dot" data-color="#f5a623" style="--dot:#f5a623"></button>
+                    <button class="color-dot" data-color="#e55577" style="--dot:#e55577"></button>
+                    <button class="color-dot" data-color="#8b6914" style="--dot:#8b6914"></button>
+                  </div>
+                </div>
               </div>
               <div class="section-label">Tất cả ghi chú</div>
               <div class="note-list" id="noteList"></div>
             </div>
 
-            <!-- ===== TAB CONTENT: NGÀY QUAN TRỌNG ===== -->
+            <!-- ===== NGÀY ===== -->
             <div id="tabDates" class="tab-content" data-tab-content="dates">
               <div class="date-input-group">
-                <div class="vault-input-row">
-                  <input id="dateTitle" type="text" placeholder="Tên sự kiện (vd: Ngày quen nhau)" maxlength="40">
-                </div>
-                <div class="vault-input-row">
-                  <input id="dateValue" type="date">
-                  <button id="addDateBtn" class="round-add-btn" type="button" aria-label="Thêm ngày">
-                    <i class="material-symbols-rounded">add</i>
-                  </button>
-                </div>
+                <div class="vault-input-row"><input id="dateTitle" type="text" placeholder="Tên sự kiện..." maxlength="40"></div>
+                <div class="vault-input-row"><input id="dateValue" type="date"><button id="addDateBtn" class="round-add-btn" type="button"><i class="material-symbols-rounded">add</i></button></div>
               </div>
               <div class="section-label">Những ngày quan trọng</div>
               <div class="date-list" id="dateList"></div>
             </div>
 
-            <!-- ===== TAB CONTENT: TÂM TRẠNG ===== -->
+            <!-- ===== TÂM TRẠNG ===== -->
             <div id="tabMood" class="tab-content" data-tab-content="mood">
               <div class="mood-today">
                 <p class="mood-question">Hôm nay bé cảm thấy thế nào?</p>
                 <div class="mood-picker" id="moodPicker">
-                  <button class="mood-btn" data-mood="😍" type="button">😍</button>
-                  <button class="mood-btn" data-mood="😊" type="button">😊</button>
-                  <button class="mood-btn" data-mood="😐" type="button">😐</button>
-                  <button class="mood-btn" data-mood="😢" type="button">😢</button>
-                  <button class="mood-btn" data-mood="😡" type="button">😡</button>
-                  <button class="mood-btn" data-mood="🥰" type="button">🥰</button>
-                  <button class="mood-btn" data-mood="😴" type="button">😴</button>
-                  <button class="mood-btn" data-mood="🤔" type="button">🤔</button>
+                  <button class="mood-btn" data-mood="😍">😍</button>
+                  <button class="mood-btn" data-mood="🥰">🥰</button>
+                  <button class="mood-btn" data-mood="😊">😊</button>
+                  <button class="mood-btn" data-mood="😐">😐</button>
+                  <button class="mood-btn" data-mood="🤔">🤔</button>
+                  <button class="mood-btn" data-mood="😢">😢</button>
+                  <button class="mood-btn" data-mood="😭">😭</button>
+                  <button class="mood-btn" data-mood="😡">😡</button>
+                  <button class="mood-btn" data-mood="😴">😴</button>
+                </div>
+                <div id="moodNoteArea" class="mood-note-area hidden">
+                  <input id="moodNote" type="text" placeholder="Ghi chú tâm trạng (tối đa 50 chữ)..." maxlength="50">
+                  <div class="mood-extra-row">
+                    <input id="moodLabel" type="text" placeholder="Tên (vd: Hạnh phúc)" maxlength="15">
+                    <div class="color-grid-mini" id="moodColorGrid">
+                      <button class="color-dot-sm active" data-color=""></button>
+                      <button class="color-dot-sm" data-color="#e8809c" style="--dot:#e8809c"></button>
+                      <button class="color-dot-sm" data-color="#c5a3e8" style="--dot:#c5a3e8"></button>
+                      <button class="color-dot-sm" data-color="#5c9ced" style="--dot:#5c9ced"></button>
+                      <button class="color-dot-sm" data-color="#a8d5a2" style="--dot:#a8d5a2"></button>
+                    </div>
+                  </div>
+                  <button id="saveMoodBtn" class="action-btn primary-btn" type="button">Lưu tâm trạng 💗</button>
                 </div>
               </div>
               <div class="section-label">Nhật ký tâm trạng</div>
               <div class="mood-log" id="moodLog"></div>
             </div>
 
-            <!-- ===== TAB CONTENT: CÀI ĐẶT / ADMIN ===== -->
+            <!-- ===== CÀI ĐẶT ===== -->
             <div id="tabSettings" class="tab-content" data-tab-content="settings">
-              <div class="settings-section">
-                <div class="settings-title">
-                  <i class="material-symbols-rounded">info</i> Thông tin Két
+              <div class="settings-card">
+                <div class="settings-card-title"><i class="material-symbols-rounded">account_circle</i> Tài khoản</div>
+                <div class="settings-account-info">
+                  <div class="account-avatar" id="accountAvatar">💗</div>
+                  <div><div class="account-name" id="accountName">—</div><div class="account-username" id="accountUsername">@—</div></div>
                 </div>
-                <div class="settings-info" id="settingsInfo">
-                  <p>Mật mã hiện tại: <strong id="currentPasscode">****</strong></p>
-                  <p>Vai trò: <span id="currentRole">User</span></p>
-                </div>
+                <div class="settings-detail-row"><span>Mật mã</span><strong id="accountPasscode">****</strong></div>
+                <div class="settings-detail-row"><span>Vai trò</span><strong id="accountRole">User</strong></div>
               </div>
-
-              <!-- Admin Panel - Chỉ hiện cho 0908 -->
-              <div id="adminPanel" class="admin-panel hidden">
-                <div class="settings-title admin-title">
-                  <i class="material-symbols-rounded">admin_panel_settings</i> Bảng Điều Khiển Admin
-                </div>
-                <p class="admin-desc">Xem toàn bộ dữ liệu của tất cả người dùng trên thiết bị này.</p>
+              <div class="settings-card">
+                <div class="settings-card-title"><i class="material-symbols-rounded">tune</i> Tùy chỉnh</div>
+                <button class="settings-item" id="settingDarkMode" type="button"><div class="settings-item-left"><i class="material-symbols-rounded">dark_mode</i><span>Chế độ tối</span></div><div class="toggle-switch" id="darkModeToggle"><div class="toggle-knob"></div></div></button>
+                <button class="settings-item" id="settingRemember" type="button"><div class="settings-item-left"><i class="material-symbols-rounded">fingerprint</i><span>Ghi nhớ đăng nhập</span></div><i class="material-symbols-rounded settings-arrow">chevron_right</i></button>
+              </div>
+              <div class="settings-card">
+                <div class="settings-card-title"><i class="material-symbols-rounded">security</i> Bảo mật</div>
+                <button class="settings-item" id="settingChangePasscode" type="button"><div class="settings-item-left"><i class="material-symbols-rounded">lock_reset</i><span>Đổi mật mã</span></div><i class="material-symbols-rounded settings-arrow">chevron_right</i></button>
+                <button class="settings-item" id="settingChangeUsername" type="button"><div class="settings-item-left"><i class="material-symbols-rounded">edit</i><span>Đổi tên đăng nhập</span></div><i class="material-symbols-rounded settings-arrow">chevron_right</i></button>
+              </div>
+              <div class="settings-card danger-card">
+                <div class="settings-card-title"><i class="material-symbols-rounded">warning</i> Vùng nguy hiểm</div>
+                <button class="settings-item danger-item" id="settingDeleteVault" type="button"><div class="settings-item-left"><i class="material-symbols-rounded">delete_forever</i><span>Xóa toàn bộ két</span></div><i class="material-symbols-rounded settings-arrow">chevron_right</i></button>
+              </div>
+              <div id="adminPanel" class="settings-card admin-card hidden">
+                <div class="settings-card-title admin-title"><i class="material-symbols-rounded">admin_panel_settings</i> Bảng Điều Khiển Admin</div>
+                <p class="admin-desc">Bấm vào từng két để xem chi tiết.</p>
                 <div id="adminVaultList" class="admin-vault-list"></div>
               </div>
+              <div class="settings-footer">Két Bí Mật v3.1 · Made with 💗</div>
             </div>
-
           </div>
 
-          <!-- Bottom Navigation -->
+          <!-- Bottom Nav -->
           <div class="bottom-nav">
-            <div class="bottom-item active" data-nav="favorites">
-              <i class="material-symbols-rounded nav-icon">home</i>
-              <span>Trang chủ</span>
-            </div>
-            <div class="bottom-item" data-nav="notes">
-              <i class="material-symbols-rounded nav-icon">edit_note</i>
-              <span>Ghi chú</span>
-            </div>
-            <div class="bottom-item" data-nav="mood">
-              <i class="material-symbols-rounded nav-icon">mood</i>
-              <span>Tâm trạng</span>
-            </div>
-            <div class="bottom-item" data-nav="dates">
-              <i class="material-symbols-rounded nav-icon">calendar_month</i>
-              <span>Ngày</span>
-            </div>
-            <div class="bottom-item" data-nav="settings">
-              <i class="material-symbols-rounded nav-icon">settings</i>
-              <span>Cài đặt</span>
-            </div>
+            <div class="bottom-item active" data-nav="favorites"><i class="material-symbols-rounded nav-icon">home</i><span>Trang chủ</span></div>
+            <div class="bottom-item" data-nav="notes"><i class="material-symbols-rounded nav-icon">edit_note</i><span>Ghi chú</span></div>
+            <div class="bottom-item" data-nav="mood"><i class="material-symbols-rounded nav-icon">mood</i><span>Tâm trạng</span></div>
+            <div class="bottom-item" data-nav="dates"><i class="material-symbols-rounded nav-icon">calendar_month</i><span>Ngày</span></div>
+            <div class="bottom-item" data-nav="settings"><i class="material-symbols-rounded nav-icon">settings</i><span>Cài đặt</span></div>
           </div>
-
-          <button id="lockBtn" class="lock-floating-btn" type="button">
-            <i class="material-symbols-rounded">lock</i>
-            <span>Khóa két</span>
-          </button>
+          <button id="lockBtn" class="lock-floating-btn" type="button"><i class="material-symbols-rounded">lock</i></button>
         </section>
+
+        <!-- Dialog -->
+        <div id="dialogOverlay" class="dialog-overlay hidden"><div id="dialogBox" class="dialog-box"></div></div>
       </div>
     </div>
   </main>
-
   <script src="app.js"></script>
 </body>
 </html>
